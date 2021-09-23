@@ -1,0 +1,83 @@
+<div class="container">
+    <h3>Payment Form</h3>
+
+    <div class="row">
+        <div class= "form-group col">
+            <label class="label">Payee Name</label>
+            <input class = "form-control" (input)="onNameChange($event)" />
+        </div>
+        
+        <div class="col">
+            <label><b>Name</b></label>
+            <div>
+                {{payeeName | titlecase}}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class= "form-group col">
+            <label class="label">Payment Date</label>
+            <input class = "form-control" type="date" (input)="onDateChange($event)" />
+        </div>
+        
+        <div class="col">
+            <label><b>Date</b></label>
+            <div>
+                {{ paymentDate | date:"longDate"}}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class= "form-group col">
+            <label class="label">Amount</label>
+            <input class = "form-control" type="text" (input)="onPaymentChange($event)" />
+        </div>
+        
+        <div class="col">
+            <label><b>Payment</b></label>
+            <div>
+                {{ amount | currency:"EUR" }}
+            </div>
+        </div>
+    </div>
+
+
+    <h3>Other Conversions</h3>
+
+    <div class="row">
+        <div class= "form-group col">
+            <label class="label">Height</label>
+            <input class = "form-control" (input)="onHeightChange($event)" />
+        </div>
+        
+        <div class="col">
+            <label><b>Height</b></label>
+            <div>
+                {{ height | number : '1.0-3' }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class= "form-group col">
+            <label class="label">Miles</label>
+            <input class = "form-control" (input)="onMilesChange($event)" />
+        </div>
+        
+        <div class="col">
+            <label><b>Output</b></label>
+            <div *ngIf="(miles | lengthConversion : 'km') > 5">
+                {{ miles | lengthConversion : "km" | number:"1.0-3"}}
+            </div>
+        </div>
+    </div>
+
+<!-- {{motorcycle|json}} -->
+
+
+</div>
+
+
+
